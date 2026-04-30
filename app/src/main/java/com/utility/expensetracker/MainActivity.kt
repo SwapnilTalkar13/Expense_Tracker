@@ -17,12 +17,15 @@ import androidx.navigation.compose.rememberNavController
 import com.utility.expensetracker.feature.splash.navigation.SPLASH_ROUTE
 import com.utility.expensetracker.feature.splash.navigation.splashScreen
 import com.utility.expensetracker.ui.theme.ExpenseTrackerTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Main activity for ExpenseTracker application
  *
  * Sets up the navigation graph with splash screen as the initial destination.
+ * Annotated with @AndroidEntryPoint to enable Hilt dependency injection.
  */
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

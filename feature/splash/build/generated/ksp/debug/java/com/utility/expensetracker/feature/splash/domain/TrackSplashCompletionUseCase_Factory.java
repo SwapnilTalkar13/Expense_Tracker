@@ -2,10 +2,10 @@ package com.utility.expensetracker.feature.splash.domain;
 
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
+import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
-import javax.inject.Provider;
 
 @ScopeMetadata("javax.inject.Singleton")
 @QualifierMetadata
@@ -19,12 +19,14 @@ import javax.inject.Provider;
     "rawtypes",
     "KotlinInternal",
     "KotlinInternalInJava",
-    "cast"
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class TrackSplashCompletionUseCase_Factory implements Factory<TrackSplashCompletionUseCase> {
   private final Provider<SplashRepository> repositoryProvider;
 
-  public TrackSplashCompletionUseCase_Factory(Provider<SplashRepository> repositoryProvider) {
+  private TrackSplashCompletionUseCase_Factory(Provider<SplashRepository> repositoryProvider) {
     this.repositoryProvider = repositoryProvider;
   }
 

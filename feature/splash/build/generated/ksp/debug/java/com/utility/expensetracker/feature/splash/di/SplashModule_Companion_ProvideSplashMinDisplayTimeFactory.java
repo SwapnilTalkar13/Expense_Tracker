@@ -18,7 +18,9 @@ import javax.annotation.processing.Generated;
     "rawtypes",
     "KotlinInternal",
     "KotlinInternalInJava",
-    "cast"
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class SplashModule_Companion_ProvideSplashMinDisplayTimeFactory implements Factory<Long> {
   @Override
@@ -35,6 +37,6 @@ public final class SplashModule_Companion_ProvideSplashMinDisplayTimeFactory imp
   }
 
   private static final class InstanceHolder {
-    private static final SplashModule_Companion_ProvideSplashMinDisplayTimeFactory INSTANCE = new SplashModule_Companion_ProvideSplashMinDisplayTimeFactory();
+    static final SplashModule_Companion_ProvideSplashMinDisplayTimeFactory INSTANCE = new SplashModule_Companion_ProvideSplashMinDisplayTimeFactory();
   }
 }

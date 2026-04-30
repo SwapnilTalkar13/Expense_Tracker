@@ -1,10 +1,12 @@
 package com.utility.expensetracker
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Application class for ExpenseTracker
  *
- * Basic application class - Hilt will be restored in a follow-up.
+ * Annotated with @HiltAndroidApp to enable Hilt dependency injection.
  */
+@HiltAndroidApp
 class ExpenseTrackerApplication : Application()

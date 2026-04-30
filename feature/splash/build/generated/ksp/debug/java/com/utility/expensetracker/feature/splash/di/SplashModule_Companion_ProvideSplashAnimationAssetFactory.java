@@ -19,7 +19,9 @@ import javax.annotation.processing.Generated;
     "rawtypes",
     "KotlinInternal",
     "KotlinInternalInJava",
-    "cast"
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class SplashModule_Companion_ProvideSplashAnimationAssetFactory implements Factory<String> {
   @Override
@@ -36,6 +38,6 @@ public final class SplashModule_Companion_ProvideSplashAnimationAssetFactory imp
   }
 
   private static final class InstanceHolder {
-    private static final SplashModule_Companion_ProvideSplashAnimationAssetFactory INSTANCE = new SplashModule_Companion_ProvideSplashAnimationAssetFactory();
+    static final SplashModule_Companion_ProvideSplashAnimationAssetFactory INSTANCE = new SplashModule_Companion_ProvideSplashAnimationAssetFactory();
   }
 }
