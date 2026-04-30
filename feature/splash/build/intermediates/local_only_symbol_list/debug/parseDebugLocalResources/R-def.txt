@@ -1,0 +1,12 @@
+R_DEF: Internal format may change without notice
+local
+string splash_animation_description
+string splash_content_description
+string splash_error_animation_load
+string splash_error_content_description
+string splash_error_failed_to_load
+string splash_error_generic
+string splash_error_loading
+string splash_error_network_connection
+string splash_error_network_timeout
+string splash_loading_description

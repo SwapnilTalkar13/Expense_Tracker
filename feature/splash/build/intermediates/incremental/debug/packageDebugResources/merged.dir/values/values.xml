@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="splash_animation_description">ExpenseTracker wallet animation</string>
+    <string name="splash_content_description">Splash screen loading animation</string>
+    <string name="splash_error_animation_load">Unable to load animation. Please check your connection and try again.</string>
+    <string name="splash_error_content_description">Error occurred during app startup</string>
+    <string name="splash_error_failed_to_load">Failed to load splash screen</string>
+    <string name="splash_error_generic">An unexpected error occurred</string>
+    <string name="splash_error_loading">Unable to start app</string>
+    <string name="splash_error_network_connection">Network connection failed</string>
+    <string name="splash_error_network_timeout">Network timeout occurred</string>
+    <string name="splash_loading_description">Loading ExpenseTracker application</string>
+</resources>

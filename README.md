@@ -475,6 +475,12 @@ We welcome contributions to ExpenseTracker! Here's how you can help:
 - ✅ Database access only through repositories
 - ✅ Feature modules don't depend on each other
 - ✅ Money handling uses BigDecimal/Long (never Double)
+- ✅ Assets have single canonical ownership (no duplicates)
+
+### Project Documentation
+- **[Asset Structure Guidelines](docs/asset-structure.md)** - Complete guide to asset organization and management
+- **[Build Troubleshooting Guide](docs/build-troubleshooting.md)** - Common build issues and solutions
+- **[Agent Instructions (AGENT.md)](AGENT.md)** - Development rules and architectural guidelines
 
 ---
 

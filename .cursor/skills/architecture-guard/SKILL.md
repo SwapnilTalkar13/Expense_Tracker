@@ -15,15 +15,18 @@ description: >-
 - **Dependency direction**: `feature → domain → core`; no feature↔feature deps.
 - **Layer boundaries**: UI does not touch Retrofit, DAOs, or repositories directly; business logic stays out of composables and belongs in use cases where applicable.
 - **Data**: repositories own source selection; Room changes imply migrations and tests per AGENT.md.
+- **Asset ownership**: verify single canonical asset locations per AGENT.md rules; flag duplicates.
+- **Resource cleanup**: detect orphaned assets, empty directories after refactors.
+- **Build configuration**: validate Gradle setup follows AGENT.md rules (KSP over KAPT, AndroidX enabled, compatible SDK versions).
 - **Risk**: call out dangerous edits (Gradle root, schema, signing, CI) when relevant.
 
 ## Severity
 
 | Level | Examples |
 |-------|----------|
-| **Blocker** | Wrong module dependency direction; DB/network access from UI; money as `Double` |
-| **Warning** | Fat ViewModel; business logic in repository or UI |
-| **Advisory** | Naming, packaging, duplication |
+| **Blocker** | Wrong module dependency direction; DB/network access from UI; money as `Double`; duplicate assets across modules; KAPT + KSP mixing; AndroidX disabled with AndroidX dependencies |
+| **Warning** | Fat ViewModel; business logic in repository or UI; assets in wrong module; incompatible SDK versions |
+| **Advisory** | Naming, packaging, unused assets, empty directories; missing Gradle performance optimizations |
 
 ## Review behavior
 

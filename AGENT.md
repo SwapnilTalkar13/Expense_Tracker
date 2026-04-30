@@ -34,6 +34,7 @@ This is the Android application for tracking expenses on a daily basis.
 /core/network       -> API layer
 /core/database      -> Room DB
 /core/common        -> Utilities
+/feature/*          -> Feature modules (e.g., splash, expenses, etc.)
 /buildSrc           -> Build configs (if used)
 
 ## Architecture Rules
@@ -43,6 +44,35 @@ This is the Android application for tracking expenses on a daily basis.
 - Repository handles data source selection.
 - Feature modules must not depend on each other directly.
 - Shared code belongs in /core modules.
+
+## Asset Management Rules
+
+### Asset Ownership
+- **Single canonical owner**: Every asset must have exactly one authoritative location.
+- **Shared app-wide assets** → `app/src/main/assets/` (icons, app-level configs)
+- **Feature-specific assets** → `feature/*/src/main/assets/` (feature animations, feature-specific media)
+- **Shared UI assets** → `core/ui/src/main/assets/` (common themes, shared graphics)
+
+### Refactoring Assets
+- **Move, don't copy**: When relocating assets to new modules, move files completely.
+- **Update all references**: Update import paths, resource references, and build configurations.
+- **Clean up sources**: Delete original files after successful move and verification.
+- **Verify functionality**: Ensure build passes and runtime asset loading works post-move.
+
+### Duplicate Prevention
+- **Pre-flight scan**: Before finalizing changes, scan for duplicate filenames across modules.
+- **Unused asset detection**: Flag assets that are no longer referenced in code.
+- **Conflict resolution**: Ask user before keeping multiple versions of same-named assets.
+- **Empty directory cleanup**: Remove empty asset directories after moves.
+
+### Module Refactor Checklist
+For feature/module creation or restructuring:
+- [ ] No duplicate assets exist
+- [ ] No dead/unreferenced files remain
+- [ ] Asset ownership follows module boundaries
+- [ ] All asset references updated
+- [ ] Build and runtime verification completed
+- [ ] Empty directories removed
 
 ## Coding Standards
 - Kotlin first.
@@ -59,6 +89,7 @@ This is the Android application for tracking expenses on a daily basis.
 - Preview required for new composables.
 - Use string resources only (no hardcoded text).
 - Support dark mode.
+- Support edge-to-edge layouts with proper system bar insets.
 
 ## Testing Rules
 - Add unit tests for ViewModels and UseCases.
@@ -71,6 +102,25 @@ This is the Android application for tracking expenses on a daily basis.
 - Any new dependency must be justified.
 - Use version catalog libs.versions.toml
 - Avoid large unmaintained libraries.
+
+## Gradle Configuration Rules
+
+### Build System Setup
+- **Always use KSP over KAPT**: KSP is faster and more compatible with modern Kotlin versions
+- **Enable AndroidX**: Set `android.useAndroidX=true` in gradle.properties for all AndroidX dependencies
+- **SDK Compatibility**: Use compatible compileSdk/targetSdk versions (35+ for AndroidX 1.15.0+)
+- **Version Catalog**: Define all dependency versions in `gradle/libs.versions.toml`
+
+### Plugin Management
+- **Root Project Plugins**: Apply all plugins in root build.gradle.kts with `apply false`
+- **Plugin Compatibility**: Test Kotlin/AGP/Hilt version combinations before upgrading
+- **KSP Setup**: Use `ksp(libs.hilt.compiler)` instead of `kapt(libs.hilt.compiler)`
+
+### Common Build Issues Prevention
+- **AndroidX Migration**: Always enable AndroidX for projects using Compose/modern libraries  
+- **SDK Mismatch**: Update compileSdk when dependencies require higher Android API levels
+- **Plugin Conflicts**: Avoid mixing KAPT and KSP in the same project
+- **Gradle Properties**: Include performance optimizations (configuration-cache, caching)
 
 ## Model Selection
 | Model | When to use | Agents |
@@ -94,13 +144,20 @@ feature -> domain -> core
 - UseCases
 - DAO additions
 - Tests
+- Asset moves within established module boundaries
+- KSP annotation processor updates
+- AndroidX dependency updates within same major version
 
 ## Dangerous Changes
 - Gradle root config
 - Room schema changes
-- Dependency upgrades
+- Major dependency upgrades (Kotlin, AGP, Compose BOM)
 - Signing config
 - CI pipeline
+- Mass asset relocations without verification
+- Deleting assets without confirming references
+- KAPT to KSP migration without testing
+- compileSdk downgrades when using newer AndroidX libraries
 
 ## Current Features
 - Add Expense
