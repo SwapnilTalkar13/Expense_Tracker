@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml:2:13-83
+INJECTED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml:2:13-83
+	package
+		INJECTED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml
+	xmlns:android
+		ADDED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml:2:23-81
+uses-sdk
+INJECTED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml reason: use-sdk injection requested
+INJECTED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml
+INJECTED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml
+	android:targetSdkVersion
+		INJECTED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml
+	android:minSdkVersion
+		INJECTED from /Users/swapnil/AndroidStudioProjects/ExpenseTracker/core/common/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2474631794394545457.xml

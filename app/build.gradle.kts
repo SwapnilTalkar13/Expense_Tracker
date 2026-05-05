@@ -46,6 +46,9 @@ android {
 dependencies {
     // Feature modules
     implementation(project(":feature:splash"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:transaction"))
+    implementation(project(":feature:category"))
 
     // Core dependencies
     implementation(libs.androidx.core.ktx)

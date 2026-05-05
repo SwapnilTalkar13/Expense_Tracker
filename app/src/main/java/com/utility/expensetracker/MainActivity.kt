@@ -9,13 +9,26 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.utility.expensetracker.feature.splash.navigation.SPLASH_ROUTE
 import com.utility.expensetracker.feature.splash.navigation.splashScreen
+import com.utility.expensetracker.feature.home.navigation.HOME_ROUTE
+import com.utility.expensetracker.feature.home.navigation.homeScreen
+import com.utility.expensetracker.feature.home.navigation.navigateToHome
+import com.utility.expensetracker.feature.transaction.navigation.TRANSACTION_ROUTE
+import com.utility.expensetracker.feature.transaction.navigation.transactionScreen
+import com.utility.expensetracker.feature.transaction.navigation.navigateToTransaction
+import com.utility.expensetracker.feature.category.navigation.CATEGORY_ROUTE
+import com.utility.expensetracker.feature.category.navigation.categoryScreen
+import com.utility.expensetracker.feature.category.navigation.navigateToCategory
+import com.utility.expensetracker.navigation.PlayfulBottomNavigation
 import com.utility.expensetracker.ui.theme.ExpenseTrackerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -71,7 +84,7 @@ private fun ExpenseTrackerApp() {
             },
         )
 
-        // Main app content - placeholder for now
+        // Main app content with bottom navigation
         composable("main") {
             MainAppContent()
         }
@@ -79,17 +92,38 @@ private fun ExpenseTrackerApp() {
 }
 
 /**
- * Placeholder main app content
- *
- * This will be replaced with the actual main navigation graph
- * once other features are implemented.
+ * Main app content with bottom navigation and feature screens
  */
 @Composable
 private fun MainAppContent() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Text(
-            text = "Welcome to Expense Tracker!",
+    val mainNavController = rememberNavController()
+    val currentBackStackEntry by mainNavController.currentBackStackEntryAsState()
+    val currentRoute = currentBackStackEntry?.destination?.route ?: HOME_ROUTE
+
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            PlayfulBottomNavigation(
+                currentRoute = currentRoute,
+                onNavigate = { route ->
+                    when (route) {
+                        "home" -> mainNavController.navigateToHome()
+                        "transaction" -> mainNavController.navigateToTransaction()
+                        "category" -> mainNavController.navigateToCategory()
+                    }
+                },
+            )
+        },
+    ) { innerPadding ->
+        NavHost(
+            navController = mainNavController,
+            startDestination = HOME_ROUTE,
             modifier = Modifier.padding(innerPadding),
-        )
+        ) {
+            // Feature screens
+            homeScreen()
+            transactionScreen()
+            categoryScreen()
+        }
     }
 }
